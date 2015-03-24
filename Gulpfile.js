@@ -6,7 +6,6 @@ var gulp = require('gulp'),
   minifyjs = require('gulp-uglify'),
   browserify = require('browserify'),
   sourcemaps = require('gulp-sourcemaps'),
-  browserifyShim = require('browserify-shim'),
   sourcestream = require('vinyl-source-stream');
 
 var args = require('yargs').alias('P', 'production')
