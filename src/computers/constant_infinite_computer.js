@@ -1,4 +1,4 @@
-var InfiniteComputer = require('./infinite_computer.js');
+var InfiniteComputer = require('./infinite_computer');
 
 class ConstantInfiniteComputer extends InfiniteComputer {
   getTotalScrollableHeight() {

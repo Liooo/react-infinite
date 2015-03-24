@@ -1,5 +1,5 @@
-var InfiniteComputer = require('./infinite_computer.js'),
-    bs = require('../utils/binary_index_search.js');
+var InfiniteComputer = require('./infinite_computer'),
+    bs = require('../utils/binary_index_search');
 
 class ArrayInfiniteComputer extends InfiniteComputer {
   constructor(heightData, numberOfChildren) {
