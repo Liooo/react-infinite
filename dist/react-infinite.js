@@ -3,8 +3,8 @@
 var React = global.React || require('react'),
     _isArray = require('lodash.isarray'),
     _isFinite = require('lodash.isfinite'),
-    ConstantInfiniteComputer = require('./computers/constant_infinite_computer.js'),
-    ArrayInfiniteComputer = require('./computers/array_infinite_computer.js');
+    ConstantInfiniteComputer = require('./computers/constant_infinite_computer'),
+    ArrayInfiniteComputer = require('./computers/array_infinite_computer');
 
 var Infinite = React.createClass({displayName: "Infinite",
 
@@ -277,7 +277,7 @@ global.Infinite = Infinite;
 
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./computers/array_infinite_computer.js":5,"./computers/constant_infinite_computer.js":6,"lodash.isarray":2,"lodash.isfinite":3,"react":undefined}],2:[function(require,module,exports){
+},{"./computers/array_infinite_computer":5,"./computers/constant_infinite_computer":6,"lodash.isarray":2,"lodash.isfinite":3,"react":undefined}],2:[function(require,module,exports){
 /**
  * lodash 3.0.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -608,8 +608,8 @@ function escapeRegExp(string) {
 module.exports = isNative;
 
 },{}],5:[function(require,module,exports){
-var InfiniteComputer = require('./infinite_computer.js'),
-    bs = require('../utils/binary_index_search.js');
+var InfiniteComputer = require('./infinite_computer'),
+    bs = require('../utils/binary_index_search');
 
 for(var InfiniteComputer____Key in InfiniteComputer){if(InfiniteComputer.hasOwnProperty(InfiniteComputer____Key)){ArrayInfiniteComputer[InfiniteComputer____Key]=InfiniteComputer[InfiniteComputer____Key];}}var ____SuperProtoOfInfiniteComputer=InfiniteComputer===null?null:InfiniteComputer.prototype;ArrayInfiniteComputer.prototype=Object.create(____SuperProtoOfInfiniteComputer);ArrayInfiniteComputer.prototype.constructor=ArrayInfiniteComputer;ArrayInfiniteComputer.__superConstructor__=InfiniteComputer;
   function ArrayInfiniteComputer(heightData, numberOfChildren) {"use strict";
@@ -624,25 +624,25 @@ for(var InfiniteComputer____Key in InfiniteComputer){if(InfiniteComputer.hasOwnP
     }, []);
   }
 
-  ArrayInfiniteComputer.prototype.getTotalScrollableHeight=function() {"use strict";
+  Object.defineProperty(ArrayInfiniteComputer.prototype,"getTotalScrollableHeight",{writable:true,configurable:true,value:function() {"use strict";
     var length = this.prefixHeightData.length;
     return length === 0 ? 0 : this.prefixHeightData[length - 1];
-  };
+  }});
 
-  ArrayInfiniteComputer.prototype.getDisplayIndexStart=function(windowTop) {"use strict";
+  Object.defineProperty(ArrayInfiniteComputer.prototype,"getDisplayIndexStart",{writable:true,configurable:true,value:function(windowTop) {"use strict";
     return bs.binaryIndexSearch(this.prefixHeightData, windowTop, bs.opts.CLOSEST_HIGHER);
-  };
+  }});
 
-  ArrayInfiniteComputer.prototype.getDisplayIndexEnd=function(windowBottom) {"use strict";
+  Object.defineProperty(ArrayInfiniteComputer.prototype,"getDisplayIndexEnd",{writable:true,configurable:true,value:function(windowBottom) {"use strict";
     return bs.binaryIndexSearch(this.prefixHeightData, windowBottom, bs.opts.CLOSEST_HIGHER) + 1;
-  };
+  }});
 
-  ArrayInfiniteComputer.prototype.getTopSpacerHeight=function(displayIndexStart) {"use strict";
+  Object.defineProperty(ArrayInfiniteComputer.prototype,"getTopSpacerHeight",{writable:true,configurable:true,value:function(displayIndexStart) {"use strict";
     var previous = displayIndexStart - 1;
     return previous < 0 ? 0 : this.prefixHeightData[previous];
-  };
+  }});
 
-  ArrayInfiniteComputer.prototype.getBottomSpacerHeight=function(displayIndexEnd) {"use strict";
+  Object.defineProperty(ArrayInfiniteComputer.prototype,"getBottomSpacerHeight",{writable:true,configurable:true,value:function(displayIndexEnd) {"use strict";
     var previous = displayIndexEnd - 1;
     if (displayIndexEnd === 0) {
       return this.getTotalScrollableHeight();
@@ -651,41 +651,41 @@ for(var InfiniteComputer____Key in InfiniteComputer){if(InfiniteComputer.hasOwnP
     } else {
       return this.getTotalScrollableHeight() - this.prefixHeightData[previous];
     }
-  };
+  }});
 
 
 module.exports = ArrayInfiniteComputer;
 
 
-},{"../utils/binary_index_search.js":8,"./infinite_computer.js":7}],6:[function(require,module,exports){
-var InfiniteComputer = require('./infinite_computer.js');
+},{"../utils/binary_index_search":8,"./infinite_computer":7}],6:[function(require,module,exports){
+var InfiniteComputer = require('./infinite_computer');
 
 for(var InfiniteComputer____Key in InfiniteComputer){if(InfiniteComputer.hasOwnProperty(InfiniteComputer____Key)){ConstantInfiniteComputer[InfiniteComputer____Key]=InfiniteComputer[InfiniteComputer____Key];}}var ____SuperProtoOfInfiniteComputer=InfiniteComputer===null?null:InfiniteComputer.prototype;ConstantInfiniteComputer.prototype=Object.create(____SuperProtoOfInfiniteComputer);ConstantInfiniteComputer.prototype.constructor=ConstantInfiniteComputer;ConstantInfiniteComputer.__superConstructor__=InfiniteComputer;function ConstantInfiniteComputer(){"use strict";if(InfiniteComputer!==null){InfiniteComputer.apply(this,arguments);}}
-  ConstantInfiniteComputer.prototype.getTotalScrollableHeight=function() {"use strict";
+  Object.defineProperty(ConstantInfiniteComputer.prototype,"getTotalScrollableHeight",{writable:true,configurable:true,value:function() {"use strict";
     return this.heightData * this.numberOfChildren;
-  };
+  }});
 
-  ConstantInfiniteComputer.prototype.getDisplayIndexStart=function(windowTop) {"use strict";
+  Object.defineProperty(ConstantInfiniteComputer.prototype,"getDisplayIndexStart",{writable:true,configurable:true,value:function(windowTop) {"use strict";
     return Math.floor(windowTop / this.heightData);
-  };
+  }});
 
-  ConstantInfiniteComputer.prototype.getDisplayIndexEnd=function(windowBottom) {"use strict";
+  Object.defineProperty(ConstantInfiniteComputer.prototype,"getDisplayIndexEnd",{writable:true,configurable:true,value:function(windowBottom) {"use strict";
     return Math.ceil(windowBottom / this.heightData);
-  };
+  }});
 
-  ConstantInfiniteComputer.prototype.getTopSpacerHeight=function(displayIndexStart) {"use strict";
+  Object.defineProperty(ConstantInfiniteComputer.prototype,"getTopSpacerHeight",{writable:true,configurable:true,value:function(displayIndexStart) {"use strict";
     return displayIndexStart * this.heightData;
-  };
+  }});
 
-  ConstantInfiniteComputer.prototype.getBottomSpacerHeight=function(displayIndexEnd) {"use strict";
+  Object.defineProperty(ConstantInfiniteComputer.prototype,"getBottomSpacerHeight",{writable:true,configurable:true,value:function(displayIndexEnd) {"use strict";
     return Math.max(0, (this.numberOfChildren - displayIndexEnd) * this.heightData);
-  };
+  }});
 
 
 module.exports = ConstantInfiniteComputer;
 
 
-},{"./infinite_computer.js":7}],7:[function(require,module,exports){
+},{"./infinite_computer":7}],7:[function(require,module,exports){
 // An infinite computer must be able to do the following things:
 //  1. getTotalScrollableHeight()
 //  2. getDisplayIndexStart()
@@ -697,27 +697,27 @@ module.exports = ConstantInfiniteComputer;
     this.numberOfChildren = numberOfChildren;
   }
 
-  InfiniteComputer.prototype.getTotalScrollableHeight=function() {"use strict";
+  Object.defineProperty(InfiniteComputer.prototype,"getTotalScrollableHeight",{writable:true,configurable:true,value:function() {"use strict";
     throw new Error("getTotalScrollableHeight not implemented.");
-  };
+  }});
 
-  InfiniteComputer.prototype.getDisplayIndexStart=function(windowTop) {"use strict";
+  Object.defineProperty(InfiniteComputer.prototype,"getDisplayIndexStart",{writable:true,configurable:true,value:function(windowTop) {"use strict";
     throw new Error("getDisplayIndexStart not implemented.");
-  };
+  }});
 
-  InfiniteComputer.prototype.getDisplayIndexEnd=function(windowBottom) {"use strict";
+  Object.defineProperty(InfiniteComputer.prototype,"getDisplayIndexEnd",{writable:true,configurable:true,value:function(windowBottom) {"use strict";
     throw new Error("getDisplayIndexEnd not implemented.");
-  };
+  }});
 
   // These are helper methods, and can be calculated from
   // the above details.
-  InfiniteComputer.prototype.getTopSpacerHeight=function(displayIndexStart) {"use strict";
+  Object.defineProperty(InfiniteComputer.prototype,"getTopSpacerHeight",{writable:true,configurable:true,value:function(displayIndexStart) {"use strict";
     throw new Error("getTopSpacerHeight not implemented.");
-  };
+  }});
 
-  InfiniteComputer.prototype.getBottomSpacerHeight=function(displayIndexEnd) {"use strict";
+  Object.defineProperty(InfiniteComputer.prototype,"getBottomSpacerHeight",{writable:true,configurable:true,value:function(displayIndexEnd) {"use strict";
     throw new Error("getBottomSpacerHeight not implemented.");
-  };
+  }});
 
 
 module.exports = InfiniteComputer;
